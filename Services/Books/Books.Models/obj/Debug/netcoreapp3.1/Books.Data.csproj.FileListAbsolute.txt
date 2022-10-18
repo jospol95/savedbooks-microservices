@@ -1,0 +1,10 @@
+C:\Users\jos_o\Desktop\Azure-labs\microservices\try\savedBookMicroservices\Services\Books\Books.Models\bin\Debug\netcoreapp3.1\Books.Data.deps.json
+C:\Users\jos_o\Desktop\Azure-labs\microservices\try\savedBookMicroservices\Services\Books\Books.Models\bin\Debug\netcoreapp3.1\Books.Data.dll
+C:\Users\jos_o\Desktop\Azure-labs\microservices\try\savedBookMicroservices\Services\Books\Books.Models\bin\Debug\netcoreapp3.1\Books.Data.pdb
+C:\Users\jos_o\Desktop\Azure-labs\microservices\try\savedBookMicroservices\Services\Books\Books.Models\obj\Debug\netcoreapp3.1\Books.Data.csproj.AssemblyReference.cache
+C:\Users\jos_o\Desktop\Azure-labs\microservices\try\savedBookMicroservices\Services\Books\Books.Models\obj\Debug\netcoreapp3.1\Books.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jos_o\Desktop\Azure-labs\microservices\try\savedBookMicroservices\Services\Books\Books.Models\obj\Debug\netcoreapp3.1\Books.Data.AssemblyInfoInputs.cache
+C:\Users\jos_o\Desktop\Azure-labs\microservices\try\savedBookMicroservices\Services\Books\Books.Models\obj\Debug\netcoreapp3.1\Books.Data.AssemblyInfo.cs
+C:\Users\jos_o\Desktop\Azure-labs\microservices\try\savedBookMicroservices\Services\Books\Books.Models\obj\Debug\netcoreapp3.1\Books.Data.csproj.CoreCompileInputs.cache
+C:\Users\jos_o\Desktop\Azure-labs\microservices\try\savedBookMicroservices\Services\Books\Books.Models\obj\Debug\netcoreapp3.1\Books.Data.dll
+C:\Users\jos_o\Desktop\Azure-labs\microservices\try\savedBookMicroservices\Services\Books\Books.Models\obj\Debug\netcoreapp3.1\Books.Data.pdb

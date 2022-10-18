@@ -1,0 +1,15 @@
+C:\Users\jos_o\Desktop\Azure-labs\microservices\try\savedBookMicroservices\Services\Books\Books.Infrastructure\bin\Debug\netcoreapp3.1\Books.Infrastructure.deps.json
+C:\Users\jos_o\Desktop\Azure-labs\microservices\try\savedBookMicroservices\Services\Books\Books.Infrastructure\bin\Debug\netcoreapp3.1\Books.Infrastructure.dll
+C:\Users\jos_o\Desktop\Azure-labs\microservices\try\savedBookMicroservices\Services\Books\Books.Infrastructure\bin\Debug\netcoreapp3.1\Books.Infrastructure.pdb
+C:\Users\jos_o\Desktop\Azure-labs\microservices\try\savedBookMicroservices\Services\Books\Books.Infrastructure\bin\Debug\netcoreapp3.1\Books.Data.dll
+C:\Users\jos_o\Desktop\Azure-labs\microservices\try\savedBookMicroservices\Services\Books\Books.Infrastructure\bin\Debug\netcoreapp3.1\Books.Services.dll
+C:\Users\jos_o\Desktop\Azure-labs\microservices\try\savedBookMicroservices\Services\Books\Books.Infrastructure\bin\Debug\netcoreapp3.1\Books.Services.pdb
+C:\Users\jos_o\Desktop\Azure-labs\microservices\try\savedBookMicroservices\Services\Books\Books.Infrastructure\bin\Debug\netcoreapp3.1\Books.Data.pdb
+C:\Users\jos_o\Desktop\Azure-labs\microservices\try\savedBookMicroservices\Services\Books\Books.Infrastructure\obj\Debug\netcoreapp3.1\Books.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\jos_o\Desktop\Azure-labs\microservices\try\savedBookMicroservices\Services\Books\Books.Infrastructure\obj\Debug\netcoreapp3.1\Books.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jos_o\Desktop\Azure-labs\microservices\try\savedBookMicroservices\Services\Books\Books.Infrastructure\obj\Debug\netcoreapp3.1\Books.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\jos_o\Desktop\Azure-labs\microservices\try\savedBookMicroservices\Services\Books\Books.Infrastructure\obj\Debug\netcoreapp3.1\Books.Infrastructure.AssemblyInfo.cs
+C:\Users\jos_o\Desktop\Azure-labs\microservices\try\savedBookMicroservices\Services\Books\Books.Infrastructure\obj\Debug\netcoreapp3.1\Books.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\jos_o\Desktop\Azure-labs\microservices\try\savedBookMicroservices\Services\Books\Books.Infrastructure\obj\Debug\netcoreapp3.1\Books.Infrastructure.csproj.CopyComplete
+C:\Users\jos_o\Desktop\Azure-labs\microservices\try\savedBookMicroservices\Services\Books\Books.Infrastructure\obj\Debug\netcoreapp3.1\Books.Infrastructure.dll
+C:\Users\jos_o\Desktop\Azure-labs\microservices\try\savedBookMicroservices\Services\Books\Books.Infrastructure\obj\Debug\netcoreapp3.1\Books.Infrastructure.pdb

@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "KyRLLmIDAKwIq0II0kC5mgEIrzLWUajJMBAcnI4hcUc2YssGFbNu6Hi7fsOeZaq9kkyIPQKmHPYCiCwq4mDXdA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\jos_o\\Desktop\\Azure-labs\\microservices\\try\\savedBookMicroservices\\Services\\Books\\Books.Services\\Books.Services.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jos_o\\.nuget\\packages\\mongodb.bson\\2.18.0\\mongodb.bson.2.18.0.nupkg.sha512",
+    "C:\\Users\\jos_o\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

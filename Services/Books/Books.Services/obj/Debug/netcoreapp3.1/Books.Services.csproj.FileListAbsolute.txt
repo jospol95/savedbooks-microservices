@@ -1,0 +1,13 @@
+C:\Users\jos_o\Desktop\Azure-labs\microservices\try\savedBookMicroservices\Services\Books\Books.Services\bin\Debug\netcoreapp3.1\Books.Services.deps.json
+C:\Users\jos_o\Desktop\Azure-labs\microservices\try\savedBookMicroservices\Services\Books\Books.Services\bin\Debug\netcoreapp3.1\Books.Services.dll
+C:\Users\jos_o\Desktop\Azure-labs\microservices\try\savedBookMicroservices\Services\Books\Books.Services\bin\Debug\netcoreapp3.1\Books.Services.pdb
+C:\Users\jos_o\Desktop\Azure-labs\microservices\try\savedBookMicroservices\Services\Books\Books.Services\bin\Debug\netcoreapp3.1\Books.Data.dll
+C:\Users\jos_o\Desktop\Azure-labs\microservices\try\savedBookMicroservices\Services\Books\Books.Services\bin\Debug\netcoreapp3.1\Books.Data.pdb
+C:\Users\jos_o\Desktop\Azure-labs\microservices\try\savedBookMicroservices\Services\Books\Books.Services\obj\Debug\netcoreapp3.1\Books.Services.csproj.AssemblyReference.cache
+C:\Users\jos_o\Desktop\Azure-labs\microservices\try\savedBookMicroservices\Services\Books\Books.Services\obj\Debug\netcoreapp3.1\Books.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jos_o\Desktop\Azure-labs\microservices\try\savedBookMicroservices\Services\Books\Books.Services\obj\Debug\netcoreapp3.1\Books.Services.AssemblyInfoInputs.cache
+C:\Users\jos_o\Desktop\Azure-labs\microservices\try\savedBookMicroservices\Services\Books\Books.Services\obj\Debug\netcoreapp3.1\Books.Services.AssemblyInfo.cs
+C:\Users\jos_o\Desktop\Azure-labs\microservices\try\savedBookMicroservices\Services\Books\Books.Services\obj\Debug\netcoreapp3.1\Books.Services.csproj.CoreCompileInputs.cache
+C:\Users\jos_o\Desktop\Azure-labs\microservices\try\savedBookMicroservices\Services\Books\Books.Services\obj\Debug\netcoreapp3.1\Books.Services.csproj.CopyComplete
+C:\Users\jos_o\Desktop\Azure-labs\microservices\try\savedBookMicroservices\Services\Books\Books.Services\obj\Debug\netcoreapp3.1\Books.Services.dll
+C:\Users\jos_o\Desktop\Azure-labs\microservices\try\savedBookMicroservices\Services\Books\Books.Services\obj\Debug\netcoreapp3.1\Books.Services.pdb
