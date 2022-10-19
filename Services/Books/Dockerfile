@@ -9,12 +9,10 @@ EXPOSE 5001
 
 FROM mcr.microsoft.com/dotnet/sdk:3.1 AS build
 WORKDIR /src
-RUN ls
 COPY ["Books.Api/Books.Api.csproj", "Books.Api/"]
 COPY ["Books.Infrastructure/Books.Infrastructure.csproj", "Books.Infrastructure/"]
 COPY ["Books.Models/Books.Data.csproj", "Books.Models/"]
 COPY ["Books.Services/Books.Services.csproj", "Books.Services/"]
-RUN ls
 
 RUN dotnet restore "Books.Api/Books.Api.csproj"
 COPY ["Books.Api/*", "Books.Api/"]
@@ -23,8 +21,6 @@ COPY ["Books.Models/*", "Books.Api/Books.Data/"]
 COPY ["Books.Services/*", "Books.Api/Books.Services/"]
 
 WORKDIR "/src/Books.Api"
-#COPY ["Books.Models/Books.Data", "Books.Models/"]
-#COPY ["Books.Services/Books.Services", "Books.Services/"]
 RUN dotnet build "Books.Api.csproj" -c Release -o /app/build
 
 FROM build AS publish

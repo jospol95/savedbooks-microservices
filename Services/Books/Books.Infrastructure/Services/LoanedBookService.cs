@@ -1,5 +1,8 @@
-﻿using Books.Data.Models.LoanedBook;
+﻿using Books.Data;
+using Books.Data.Models.LoanedBook;
 using Books.Services;
+using Microsoft.Extensions.Options;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -8,29 +11,54 @@ namespace Books.Infrastructure.Services
 {
     public class LoanedBookService : ILoanedBookService
     {
-        public Task<LoanedBook> Create(LoanedBook book)
+        private readonly IMongoCollection<LoanedBook> _booksCollection;
+        public LoanedBookService(
+        IOptions<MongoDbSettings> savedBookDatabaseSettings)
         {
-            throw new NotImplementedException();
+            var mongoClient = new MongoClient(
+                savedBookDatabaseSettings.Value.ConnectionString);
+
+            var mongoDatabase = mongoClient.GetDatabase(
+                savedBookDatabaseSettings.Value.DatabaseName);
+
+            _booksCollection = mongoDatabase.GetCollection<LoanedBook>(
+                MongoDbCollectionNames.LoanedBooksCollection);
         }
 
-        public Task<LoanedBook> Get(string bookId)
+        public async Task<LoanedBook> Create(LoanedBook newBook)
         {
-            throw new NotImplementedException();
+            await _booksCollection.InsertOneAsync(newBook);
+            return newBook;
         }
 
-        public Task<List<LoanedBook>> Get()
+        public async Task<LoanedBook> Get(string id)
         {
-            throw new NotImplementedException();
+            return await _booksCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
         }
 
-        public Task<List<LoanedBook>> GetAllForUser(string userId)
+        public async Task<List<LoanedBook>> Get()
         {
-            throw new NotImplementedException();
+            return await _booksCollection.Find((b) => true).ToListAsync();
+
         }
 
-        public Task UpdateDueDaysForBooks(DateTime dateTimeToCompare)
+        public async Task<List<LoanedBook>> GetAllForUser(string userId)
         {
-            throw new NotImplementedException();
+            return await _booksCollection.Find(x => x.UserId == userId).ToListAsync();
+        }
+
+        public async Task UpdateDueDaysForBooks(DateTime dateTimeToCompare)
+        {
+            var books = await _booksCollection.Find(_ => true).ToListAsync();
+            foreach (var book in books)
+            {
+                var inDue = book.CheckIfInDue(dateTimeToCompare);
+                if (inDue)
+                {
+                    book.PastDueOneDay();
+                    await _booksCollection.ReplaceOneAsync((bookDb) => bookDb.Id == book.Id, book);
+                }
+            }
         }
     }
 }

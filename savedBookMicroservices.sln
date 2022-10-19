@@ -11,6 +11,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Books", "Books", "{FDA07686
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{F5BB8DE4-67D1-4CAE-86C1-FB49D6E72479}"
+	ProjectSection(SolutionItems) = preProject
+		Services\Libraries\Dockerfile = Services\Libraries\Dockerfile
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Books.Api", "Services\Books\Books.Api\Books.Api.csproj", "{82D248D8-6413-48C0-908B-5FEC9302D89F}"
 EndProject
