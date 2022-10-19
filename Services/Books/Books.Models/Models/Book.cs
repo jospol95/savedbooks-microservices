@@ -1,21 +1,19 @@
-﻿using MongoDB.Bson;
+﻿using Libraries.Data.Models;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System;
 
 namespace Books.Data.Models
 {
-    public abstract class Book
+    public abstract class Book : IEntity
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string? Id { get; set; }
-        public DateTime CreatedDateTime { get; set; }
-        public DateTime? ModifiedDateTime { get; set; }
-
         public string Title { get; set; }
+        public string Author { get; set; }
+        public string ISBN { get; set; }
         public string Description { get; set; }
         public string Rating { get; set; }
         public string UserId { get; set; }
+
 
         public Book()
         {

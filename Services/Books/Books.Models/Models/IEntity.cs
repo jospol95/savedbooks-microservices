@@ -1,18 +1,23 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace Libraries.Model
+namespace Libraries.Data.Models
 {
-    public class Library
+    public abstract class IEntity
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string? Id { get; set; }
         public DateTime CreatedDateTime { get; set; }
         public DateTime? ModifiedDateTime { get; set; }
-        public string Name { get; set; }
-        public string AddressLine1 { get; set; }
-        public string AddressLine2 { get; set; }
+
+        public IEntity()
+        {
+
+        }
+
     }
 }

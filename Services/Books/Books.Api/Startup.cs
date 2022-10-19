@@ -33,6 +33,7 @@ namespace Books.Api
 
             services.Configure<MongoDbSettings>(Configuration.GetSection("MongoDB"));
             services.AddScoped<ILoanedBookService, LoanedBookService>();
+            services.AddScoped<ILibraryService, LibraryService>();
             services.AddSwaggerGen();
             services.AddSwaggerGen(c =>
             {

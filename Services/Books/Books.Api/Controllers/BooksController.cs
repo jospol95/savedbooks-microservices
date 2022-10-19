@@ -20,7 +20,7 @@ namespace Books.Api.Controllers
             _bookService = bookService;
         }
 
-        [HttpGet("/user/{userId:string}")]
+        [HttpGet("/user/{userId}")]
         [ProducesResponseType(typeof(IEnumerable<LoanedBook>), 200)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -50,7 +50,7 @@ namespace Books.Api.Controllers
         }
 
         // GET api/<BooksController>/5
-        [HttpGet("{id:string}")]
+        [HttpGet("{id}")]
         [ProducesResponseType(typeof(LoanedBook), 200)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
