@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Search.Api.Models;
-using System.Net.Http.Headers;
 using System.Text.Json;
 
 namespace Search.Api.Controllers
@@ -13,13 +12,22 @@ namespace Search.Api.Controllers
         //Wrapper for Google Books Api search, so we can retrieve books based on name search criteria.
 
         private readonly IHttpClientFactory _httpClientFactory;
-        public SearchController(IHttpClientFactory httpClientFactory) =>
-                _httpClientFactory = httpClientFactory;
+        private readonly IMapper _mapper;
+
+        public SearchController(IHttpClientFactory httpClientFactory, IMapper mapper)
+        {
+            _httpClientFactory = httpClientFactory;
+            _mapper = mapper;
+        }
+                
 
         [HttpGet]
         [Route("/books")]
-        public async Task Search(string bookName, int maxResults)
+        public async Task<ActionResult<IEnumerable<BookResponseLight>>> Search(string? bookName, int? maxResults)
         {
+            if (bookName == null) return Ok();
+            maxResults = maxResults ?? 10;
+
             var httpClient = _httpClientFactory.CreateClient("GoogleBooksApi");
             var sanitizedBookName = bookName.Replace(" ", "%20");
             string querySearch = $"volumes?q=intitle:{sanitizedBookName}&projection=lite&printType=books&maxResults={maxResults}";
@@ -29,9 +37,41 @@ namespace Search.Api.Controllers
             {
                 using var contentStream =
                     await httpResponseMessage.Content.ReadAsStreamAsync();
-                var googleBooks = await JsonSerializer.DeserializeAsync
+                var googleBooksReponseArray = await JsonSerializer.DeserializeAsync
                     <GoogleBookResponse>(contentStream);
+                var mappedBooks = new List<BookResponseLight>();
+
+                if (googleBooksReponseArray.TotalItems < 1) return Ok();
+
+                foreach(GoogleBookItem googleBookResponseItem in googleBooksReponseArray.Items)
+                {
+                    var mappedBook = _mapper.Map<BookResponseLight>(googleBookResponseItem);
+                    mappedBooks.Add(mappedBook);
+                }   
+                var booksWithoutDuplicateTitleAndAuthor = ReduceDuplicates(mappedBooks);
+                return Ok(booksWithoutDuplicateTitleAndAuthor);
             }
+
+            return Ok();
+        }
+
+        private IList<BookResponseLight> ReduceDuplicates(IList<BookResponseLight> books)
+        {
+            var consolidatedList =
+                from book in books
+                group book by new
+                {
+                    book.Title,
+                    book.Author
+                } into grouped
+                select new BookResponseLight()
+                {
+                    Title = grouped.First().Title,
+                    Description = grouped.First().Description,
+                    Author = grouped.First().Author,
+                };
+
+            return consolidatedList.ToList();
         }
     }
 }

@@ -9,6 +9,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddAutoMapper(typeof(Program));
+
 builder.Services.AddHttpClient("GoogleBooksApi", httpClient =>
 {
     httpClient.BaseAddress = new Uri("https://www.googleapis.com/books/v1/");
