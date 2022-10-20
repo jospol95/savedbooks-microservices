@@ -74,6 +74,7 @@ I borrow books all the time, and, most of the time, I forget when I need to retu
 
 ### Functionalities
 * The app let's you have an overview of the books you borrowed, and when do you need to return them.
+* When saving a book, the app loads a list of existing books based on title search criteria, using Google Books API.
 * It triggers notification alerts (email, SMS, push notifications) when a book is about to be past due!
 * If a books is past due, it calculates the fees you gotta pay.
 
