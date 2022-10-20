@@ -5,11 +5,10 @@ using System.Text.Json;
 
 namespace Search.Api.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    //Wrapper for Google Books Api search, so we can retrieve books based on name search criteria.
     public class SearchController : ControllerBase
     {
-        //Wrapper for Google Books Api search, so we can retrieve books based on name search criteria.
 
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly IMapper _mapper;
@@ -21,15 +20,14 @@ namespace Search.Api.Controllers
         }
                 
 
-        [HttpGet]
-        [Route("/books")]
+        [HttpGet("api/[controller]/books")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
 
         public async Task<ActionResult<IEnumerable<BookResponseLight>>> Search(string? bookName, int? maxResults)
         {
             if (bookName == null) return NotFound();
-            maxResults = maxResults ?? 10;
+            maxResults = maxResults ?? 20;
 
             var httpClient = _httpClientFactory.CreateClient("GoogleBooksApi");
             var sanitizedBookName = bookName.Replace(" ", "%20");
