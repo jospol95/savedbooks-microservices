@@ -1,3 +1,5 @@
+using Microsoft.Net.Http.Headers;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +8,11 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddHttpClient("GoogleBooksApi", httpClient =>
+{
+    httpClient.BaseAddress = new Uri("https://www.googleapis.com/books/v1/");
+});
 
 var app = builder.Build();
 
