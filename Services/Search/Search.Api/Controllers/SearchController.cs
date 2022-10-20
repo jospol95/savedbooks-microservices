@@ -23,9 +23,12 @@ namespace Search.Api.Controllers
 
         [HttpGet]
         [Route("/books")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+
         public async Task<ActionResult<IEnumerable<BookResponseLight>>> Search(string? bookName, int? maxResults)
         {
-            if (bookName == null) return Ok();
+            if (bookName == null) return NotFound();
             maxResults = maxResults ?? 10;
 
             var httpClient = _httpClientFactory.CreateClient("GoogleBooksApi");
@@ -52,7 +55,7 @@ namespace Search.Api.Controllers
                 return Ok(booksWithoutDuplicateTitleAndAuthor);
             }
 
-            return Ok();
+            return NotFound();
         }
 
         private IList<BookResponseLight> ReduceDuplicates(IList<BookResponseLight> books)
