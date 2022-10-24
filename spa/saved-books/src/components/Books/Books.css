@@ -1,0 +1,15 @@
+.actions-row{
+    /*background: red;*/
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 400px;
+    padding-bottom: 10px;
+}
+
+.inner-content{
+    /*background: red;*/
+    width: 100%;
+    margin: 5px;
+    display: block;
+}

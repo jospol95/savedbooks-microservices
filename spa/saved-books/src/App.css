@@ -28,12 +28,6 @@
 
 }
 
-.inner-content{
-  /*background: red;*/
-  width: 100%;
-  margin: 5px;
-  display: block;
-}
 
 .App-header {
   display: flex;
@@ -62,13 +56,4 @@ h3{
   margin: 5px 0 5px 0;
   /*padding: 0;*/
 }
-.actions-row{
-  /*background: red;*/
-  display: flex;
-  justify-content: space-between;
-  margin: 0 auto;
-  max-width: 380px;
-  padding-bottom: 10px;
 
-
-}
