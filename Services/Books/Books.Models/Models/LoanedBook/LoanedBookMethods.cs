@@ -5,58 +5,41 @@ namespace Books.Data.Models.LoanedBook
 {
     public partial class LoanedBook
     {
-
-        public void UpdatePastDueFromDate(DateTime date)
+        public void CalculateDue(DateTime? date)
         {
-            var daysPassedSinceDueDate = date.DayOfYear - DateTimeToReturn.DayOfYear;
-            if(daysPassedSinceDueDate > 0)
-            {
-                PastDueXDays(daysPassedSinceDueDate);
-            }
+            date = date ?? DateTime.Now;
+            _accumulatedFee = GetAccumulatedFee(date.Value);
         }
 
-        public bool CheckIfInDue(DateTime dateTimeToCompare)
+        public double GetAccumulatedFee(DateTime todaysDate)
         {
-            return dateTimeToCompare.DayOfYear > DateTimeToReturn.DayOfYear;
+            var dueDays = GetDueDays(todaysDate);
+            if (dueDays < 1) return 0;
+
+            return DailyFee * dueDays;
+            
         }
 
-        public void CalculateIfInDue()
+        public int GetDueDays(DateTime todaysDate)
         {
-            var dueDays = DateTimeRequested.DayOfYear - DateTimeToReturn.DayOfYear;
-            if (dueDays > 0)
-            {
-                DueDays = dueDays;
-            }
+            //Comparing 10/24 agaisnt 10/22 returns 1. should be 2
+            var diff = todaysDate - DateTimeToReturn;
+            return (int)Math.Ceiling(diff.TotalDays); ;
         }
 
-        public void ExtendDateTimeToReturn(DateTime newDateTimeToReturn)
-        {
-            DateTimeToReturn = newDateTimeToReturn;
-        }
+        //public void CalculateIfInDue()
+        //{
+        //    var dueDays = DateTimeBorrowed.DayOfYear - DateTimeToReturn.DayOfYear;
+        //    if (dueDays > 0)
+        //    {
+        //        DueDays = dueDays;
+        //    }
+        //}
 
-        public void UpdateDailyFee(double dailyFee)
-        {
-            DailyFee = dailyFee;
-        }
-
-        public void PastDueOneDay()
-        {
-            DueDays += 1;
-        }
-
-        public void PastDueXDays(int numberOfDays)
-        {
-            DueDays = numberOfDays;
-        }
-
-        public double GetAccruedFee()
-        {
-            return DueDays * DailyFee.Value;
-        }
-        public void Return(DateTime returnedDatetime)
-        {
-            Returned = true;
-            DateTimeReturned = returnedDatetime;
-        }
+        //public void Return(DateTime returnedDatetime)
+        //{
+        //    Returned = true;
+        //    DateTimeReturned = returnedDatetime;
+        //}
     }
 }

@@ -2,33 +2,33 @@
 using Books.Data.Models.Libraries;
 using Libraries.Data.Models;
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Books.Data.Models.LoanedBook
 {
     public partial class LoanedBook : Book
     {
-        public DateTime DateTimeRequested { get; set; }
+        public DateTime DateTimeBorrowed { get; set; }
         public DateTime DateTimeToReturn { get; set; }
-        public double? DailyFee { get; set; }
+        public double DailyFee { get; set; }
         public bool? Returned { get; set; }
         public DateTime? DateTimeReturned { get; set; }
-        private int DueDays { get; set; }
         public Library Library { get; set; }
-
-        public LoanedBook()
+        //public double AccumulatedFee { get; set; }
+        [NotMapped]
+        private double _accumulatedFee;
+        public double AccumulatedFee
         {
+            get =>  _accumulatedFee; 
+            set => _accumulatedFee = value;
 
         }
 
-        public LoanedBook(string title, string description, DateTime dateRequested, DateTime dateToReturn, string libraryId, double? fee = 0)
+        public LoanedBook()
         {
-            Title = title;
-            Description = description;
-            DateTimeToReturn = dateToReturn;
-            DateTimeRequested = dateRequested;
-            DailyFee = fee;
-            DueDays = 0;
-            Returned = false;
+            Library = new Library();
+            //If the fee is not given, we'll set up to 0;
+            DailyFee = 0;
         }
       
     }

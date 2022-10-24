@@ -33,13 +33,16 @@ namespace Books.Infrastructure.Services
 
         public async Task<LoanedBook> Get(string id)
         {
-            return await _booksCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
+            var book = await _booksCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
+            book.CalculateDue(DateTime.Today);
+            return book;
         }
 
         public async Task<List<LoanedBook>> Get()
         {
-            return await _booksCollection.Find((b) => true).ToListAsync();
-
+            var books = await _booksCollection.Find((b) => true).ToListAsync();
+            books.ForEach((book) => book.CalculateDue(DateTime.Now));
+            return books;
         }
 
         public async Task<List<LoanedBook>> GetAllForUser(string userId)
@@ -49,16 +52,16 @@ namespace Books.Infrastructure.Services
 
         public async Task UpdateDueDaysForBooks(DateTime dateTimeToCompare)
         {
-            var books = await _booksCollection.Find(_ => true).ToListAsync();
-            foreach (var book in books)
-            {
-                var inDue = book.CheckIfInDue(dateTimeToCompare);
-                if (inDue)
-                {
-                    book.PastDueOneDay();
-                    await _booksCollection.ReplaceOneAsync((bookDb) => bookDb.Id == book.Id, book);
-                }
-            }
+            //var books = await _booksCollection.Find(_ => true).ToListAsync();
+            //foreach (var book in books)
+            //{
+            //    var inDue = book.CheckIfInDue(dateTimeToCompare);
+            //    if (inDue)
+            //    {
+            //        book.PastDueOneDay();
+            //        await _booksCollection.ReplaceOneAsync((bookDb) => bookDb.Id == book.Id, book);
+            //    }
+            //}
         }
     }
 }

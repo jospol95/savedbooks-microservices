@@ -25,10 +25,13 @@ namespace Books.Api
         }
 
         public IConfiguration Configuration { get; }
+        public string MyAllowSpecificOrigins;
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
             services.AddControllers();
 
             services.Configure<MongoDbSettings>(Configuration.GetSection("MongoDB"));
@@ -44,7 +47,14 @@ namespace Books.Api
                     Description = "A simple example to Implement Swagger UI",
                 });
             });
-
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: MyAllowSpecificOrigins,
+                                  policy =>
+                                  {
+                                      policy.WithOrigins("http://localhost:3000");
+                                  });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,8 +70,10 @@ namespace Books.Api
             }
 
             app.UseHttpsRedirection();
-
             app.UseRouting();
+
+            app.UseCors(MyAllowSpecificOrigins);
+
 
             app.UseAuthorization();
 

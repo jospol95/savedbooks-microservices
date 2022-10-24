@@ -22,12 +22,12 @@ namespace Books.Functions
             var currentDate = DateTime.Now;
             log.LogInformation($"CheckDailyDueFunction Timer trigger function executed at: {currentDate}");
             var books = await _bookService.Get();
-            var booksInDueInTheNext3Days = 
-                books.Where((b) => IsDateBetweenPeriod(b.DateTimeToReturn, currentDate.AddDays(3)));
-            log.LogInformation($"Found {booksInDueInTheNext3Days.Count()} Books");
+            //var booksInDueInTheNext3Days = 
+            //    books.Where((b) => IsDateBetweenPeriod(b.DateTimeToReturn, currentDate.AddDays(3)));
+            //log.LogInformation($"Found {booksInDueInTheNext3Days.Count()} Books");
 
-            var booksAlreadyInDue = books.Where(b => b.CheckIfInDue(currentDate));
-            booksAlreadyInDue.ToList().ForEach((b) => b.UpdatePastDueFromDate(currentDate));
+            //var booksAlreadyInDue = books.Where(b => b.CheckIfInDue(currentDate));
+            //booksAlreadyInDue.ToList().ForEach((b) => b.UpdatePastDueFromDate(currentDate));
         }
 
         public bool IsDateBetweenPeriod(DateTime datimeToCompare, DateTime DaysFromNow)
