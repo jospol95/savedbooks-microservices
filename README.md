@@ -74,8 +74,8 @@ I borrow books all the time, and, most of the time, I forget when I need to retu
 
 ### Functionalities
 * The app let's you have an overview of the books you borrowed, and when do you need to return them.
-* When saving a book, the app loads a list of existing books based on title search criteria, using Google Books API.
 * It triggers notification alerts (email, SMS, push notifications) when a book is about to be past due!
+* When saving a book, the app loads a list of existing books based on title search criteria, using Google Books API.
 * If a books is past due, it calculates the fees you gotta pay.
 
 
@@ -96,15 +96,22 @@ Frameworks/Technologies:
 ![mongo-db]
 <br>
 ![github-act]
+<br>
+![reactjs]
+<br>
+![nodejs]
 
 Architecture/Development: 
-* Built with a microservices architecture.
-* Used AKS to orchestrate docker containers.
 * Cloud based.
+* Developed/Implemented Azure functions, Azure queue for notification alerts.
+* Built with a microservices architecture with Docker and Azure Messaging Bus.
+* Used AKS to orchestrate docker containers.
+* Applied patterns as CQRS, Repository patterns, TDD.
 * Used XUnit, FakeItEasy for Unit testing.
-* Configured GitHub actions/workflow to automate Azure deploy.
-* Developed and Deployed Azure functions for notification alerts.
-* Used .NET Core 3.1, .NET 6, GraphQL, MongoDB, AutoMapper.
+* Used GitHub actions/workflow to automate Azure deploy.
+* Used .NET Core 3.1, .NET 6, NodeJS, MongoDB, AutoMapper for Backend
+* Used React, Angular, Typescript, React/Angular Material libraries for web development.
+* Used Flutter for Mobile.
 
 
 
@@ -166,3 +173,5 @@ Architecture/Development:
 [net-core]: https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white
 [graph-ql]: https://img.shields.io/badge/-GraphQL-E10098?style=for-the-badge&logo=graphql&logoColor=white
 [docker]: https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white
+[reactjs]: https://img.shields.io/badge/-ReactJs-61DAFB?logo=react&logoColor=white&style=for-the-badge
+[nodejs]: https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white
