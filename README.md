@@ -87,19 +87,18 @@ Frameworks/Technologies:
 <br>
 ![azure]
 <br>
-![docker]
-<br>
-![graph-ql]
-<br>
 ![net-core]
 <br>
-![mongo-db]
-<br>
-![github-act]
+![docker]
 <br>
 ![reactjs]
 <br>
 ![nodejs]
+<br>
+![mongo-db]
+<br>
+![github-act]
+
 
 Architecture/Development: 
 * Cloud based.
