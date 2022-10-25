@@ -23,7 +23,6 @@ namespace Search.Api.Controllers
         [HttpGet("api/[controller]/books")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-
         public async Task<ActionResult<IEnumerable<BookResponseLight>>> Search(string? bookName, int? maxResults)
         {
             if (bookName == null) return NotFound();
