@@ -1,4 +1,3 @@
-
 <template>
   <div class="container">
     <form @submit.prevent="register">
@@ -52,14 +51,16 @@ import { Options, Vue } from 'vue-class-component';
 @Options({
   props: {
     msg: String
+  },
+  methods: {
+    moveToLogin() {
+      this.$router.push("/");
+    }
   }
 })
-export default class Register extends Vue {
+export default class RegisterView extends Vue {
   msg!: string
-  // methods: {
-  //   moveToRegister() {
-  //   this.$router.push("/register");
-  // },
-  }
 }
 </script>
+
+

@@ -2,12 +2,10 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Users.AuthenticationApi.CQRS.Commands;
-using Users.AuthenticationApi.CQRS.Queries;
 using Users.AuthenticationApi.Exceptions;
 
 namespace Users.AuthenticationApi.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
     public class AuthenticationController : ControllerBase
     {
@@ -17,16 +15,16 @@ namespace Users.AuthenticationApi.Controllers
             _mediator = mediator;
         }
 
-        [HttpPost("/login")]
+        [HttpPost("api/auth/login")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<string>> Login(string username, string password)
+        public async Task<ActionResult<string>> Login(LoginCommand login)
         {
-            var query = new GetUserQuery(username, password);
+            var command = login;
             try
             {
-                var token = await _mediator.Send(query);
+                var token = await _mediator.Send(command);
                 return Ok(token);
             }
             catch (UserNotFoundException ex)
@@ -44,7 +42,7 @@ namespace Users.AuthenticationApi.Controllers
             
         }
 
-        [HttpPost("/register")]
+        [HttpPost("api/auth/register")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]

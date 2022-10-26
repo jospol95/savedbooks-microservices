@@ -3,6 +3,7 @@ using System.Reflection;
 using Users.AuthenticationApi;
 
 var builder = WebApplication.CreateBuilder(args);
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 // Add services to the container.
 
@@ -14,7 +15,16 @@ builder.Services.AddSwaggerGen();
 builder.Services.Configure<MongoDbConnectionSettings>(builder.Configuration.GetSection("MongoDB"));
 builder.Services.ConfigureJWT(builder.Configuration);
 builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.WithOrigins("http://localhost:8080");
+                          policy.AllowAnyHeader();
+                          policy.AllowAnyMethod();
+                      });
+});
 
 var app = builder.Build();
 
@@ -26,6 +36,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthorization();
 

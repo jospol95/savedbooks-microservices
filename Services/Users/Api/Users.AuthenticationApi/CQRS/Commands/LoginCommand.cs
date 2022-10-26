@@ -4,13 +4,13 @@ using MongoDB.Driver;
 using Users.AuthenticationApi.Exceptions;
 using Users.AuthenticationApi.Models;
 
-namespace Users.AuthenticationApi.CQRS.Queries
+namespace Users.AuthenticationApi.CQRS.Commands
 {
-    public class GetUserQuery : IRequest<string>
+    public class LoginCommand : IRequest<string>
     {
         public string UserName { get; set; }
         public string Password { get; set; }
-        public GetUserQuery(string username, string password)
+        public LoginCommand(string username, string password)
         {
             UserName = username;
             Password = password;
@@ -18,7 +18,7 @@ namespace Users.AuthenticationApi.CQRS.Queries
 
     }
 
-    public class GetUserQueryHandler : IRequestHandler<GetUserQuery, string>
+    public class GetUserQueryHandler : IRequestHandler<LoginCommand, string>
     {
         private readonly IMongoCollection<User> _usersCollection;
         public GetUserQueryHandler(IOptions<MongoDbConnectionSettings> dbSettings)
@@ -32,7 +32,7 @@ namespace Users.AuthenticationApi.CQRS.Queries
             _usersCollection = mongoDatabase.GetCollection<User>(
                 dbSettings.Value.CollectionName);
         }
-        public async Task<string> Handle(GetUserQuery request, CancellationToken cancellationToken)
+        public async Task<string> Handle(LoginCommand request, CancellationToken cancellationToken)
         {
             var userName = await _usersCollection.Find(u => u.UserName == request.UserName).FirstOrDefaultAsync();
             if (userName == null) throw new UserNotFoundException();
