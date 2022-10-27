@@ -52,34 +52,35 @@ const columns : GridColumns = [
 //     { id: 3, title: 'Lannister', author: 'Jaime', age: '$' + 0.00 },
 // ];
 
-const BooksList: React.FC = () => {
-    const [books, setBooks] = useState<Array<IBook>>([]);
+const BooksList: React.FC<{books: IBook[]}> = ({books}) => {
+
+    // const [books, setBooks] = useState<Array<IBook>>([]);
     // const [currentIndex, setCurrentIndex] = useState<number>(-1);
     // const [currentTutorial, setCurrentTutorial] = useState<IBookData | null>(null);
     // const [currentIndex, setCurrentIndex] = useState<number>(-1);
     // const [searchTitle, setSearchTitle] = useState<string>("");
-    const callApi = useRef(true);
+    // const callApi = useRef(true);
 
-    useEffect(() => {
-        if(callApi.current){
-            callApi.current = false;
-            retrieveTutorials();
-        }
-    }, []);
+    // useEffect(() => {
+    //     if(callApi.current){
+    //         callApi.current = false;
+    //         retrieveTutorials();
+    //     }
+    // }, []);
 
-    const retrieveTutorials = () => {
-        BookService.getAll()
-            .then((response: any) => {
-                console.log(response);
-                console.log(response.data);
-                setBooks(response.data);
-                console.log(books);
-
-            })
-            .catch((e: Error) => {
-                console.log(e);
-            });
-    };
+    // const retrieveTutorials = () => {
+    //     BookService.getAll()
+    //         .then((response: any) => {
+    //             console.log(response);
+    //             console.log(response.data);
+    //             setBooks(response.data);
+    //             console.log(books);
+    //
+    //         })
+    //         .catch((e: Error) => {
+    //             console.log(e);
+    //         });
+    // };
 
     return (
         <div className="datagrid-ctainer">

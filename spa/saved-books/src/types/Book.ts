@@ -3,7 +3,7 @@ import ILibrary from "./Library";
 export default interface IBook {
     title: string,
     description: string,
-    usedId: string,
+    // usedId: string,
     id: string,
     library: ILibrary
     dateTimeToReturn: Date,
